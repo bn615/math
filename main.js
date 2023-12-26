@@ -133,8 +133,16 @@ function deleteUserInput(index) {
 function draw() {
     background(255);
   
+    drawGrid(20, 20); // Adjust the grid spacing as needed
+        
+
     let x = width / 2;
     let y = height / 2;
+
+
+    fill(0); // Set the fill color to black
+    noStroke(); // Disable stroke (outline)
+    ellipse(width / 2, height / 2, 10, 10); // Draw an ellipse at the center
   
     for (let i = 0; i < vectorLengths.length; i++) {
       let prevX = x;
@@ -159,4 +167,20 @@ function draw() {
     ellipse(x, y, 10, 10);
   
     currentFrame++;
+  }
+
+
+  function drawGrid(spacingX, spacingY) {
+    stroke(200); // Set the stroke color to light gray
+    strokeWeight(1); // Set the stroke weight to 1
+  
+    // Draw vertical lines
+    for (let x = 0; x <= width; x += spacingX) {
+      line(x, 0, x, height);
+    }
+  
+    // Draw horizontal lines
+    for (let y = 0; y <= height; y += spacingY) {
+      line(0, y, width, y);
+    }
   }
