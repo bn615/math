@@ -8,7 +8,7 @@ function setup() {
     positionUserInput(); // Call the function to position the user input
   }
 
-function positionUserInput() {
+  function positionUserInput() {
     const inputX = windowWidth / 2; // X position for the user input (centered horizontally)
     const inputY = 100; // Y position for the user input above the coordinates header
     const userInput = document.getElementById('userInput');
@@ -23,10 +23,29 @@ function positionUserInput() {
     inputLabel.style.left = labelX + 'px';
     inputLabel.style.top = labelY + 'px';
   }
-
+  
+  function addValue() {
+    const inputValue = document.getElementById('userInput').value;
+    if (inputValue !== '') {
+      const inputContainer = document.getElementById('input-container');
+      const newInput = document.createElement('input');
+      newInput.type = 'number';
+      newInput.value = inputValue;
+      newInput.disabled = true;
+      inputContainer.appendChild(newInput);
+    }
+  }
 
 function draw() {
+    const rotatingSpeed = [Math.PI / 6, Math.PI / 6, Math.PI / 6];
 
+    let cumulPoint = new Point(0, 0);
+    let cumulAngle = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        cumulPoint = Point.rotate(cumulPoint, cumulPoint.add(arr[i]), rotatingSpeed[i] + cumulAngle);
+        cumulAngle += rotatingSpeed[i];
+    }
 }
 
 function mouseClicked() {
