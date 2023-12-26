@@ -18,7 +18,8 @@ body {
 }
 
 .user-input-form input {
-  width: 80px; /* Adjust the width of the input boxes as needed */
+  width: 120px; /* Adjust the width of the input boxes as needed */
+  height: 50px;
 }
 
 #user-input-table {
@@ -39,8 +40,8 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 2px; /* Reduce padding */
+  border: 0.5px solid #ddd;
+  padding: 1px; /* Reduce padding */
   text-align: left;
 }
 
@@ -62,8 +63,8 @@ button:hover {
 }
 
 #canvas-container {
-  width: 800px;
-  height: 600px;
+  width: 1000px;
+  height: 1000px;
   margin: 20px auto; /* Center horizontally */
   position: relative;
   border: 1px solid #ddd;

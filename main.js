@@ -1,5 +1,5 @@
-const canvasWidth = 800;
-const canvasHeight = 600;
+const canvasWidth = 1000;
+const canvasHeight = 1000;
 
 let vectorLengths = [];
 let rotationSpeeds = [];
