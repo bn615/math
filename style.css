@@ -55,9 +55,12 @@ button:hover {
 #canvas-container {
   width: 800px;
   height: 600px;
-  margin: 20px;
-  border: 1px solid #ddd;
+  margin: 20px auto; /* Center horizontally */
   position: relative;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  border: 1px solid #ddd;
 }
 
 #canvas-container canvas {
