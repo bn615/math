@@ -165,8 +165,8 @@ function draw() {
     let px = x;
     let py = y;
 
-    x += radius * cos(currentFrame * cumSpeeds[i + 1] / setFramerate);
-    y += radius * sin(currentFrame * cumSpeeds[i + 1] / setFramerate);
+    x += radius * cos(currentFrame * cumSpeeds[i] / setFramerate);
+    y += radius * sin(currentFrame * cumSpeeds[i] / setFramerate);
 
     stroke(0);
     line(px, py, x, y);
