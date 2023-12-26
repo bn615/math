@@ -22,7 +22,7 @@ body {
 }
 
 #user-input-table {
-  width: 25%; /* Adjust the width of the table as needed */
+  width: 15%; /* Adjust the width of the table as needed */
   margin-top: 20px; /* Add margin to the top */
 }
 
@@ -40,7 +40,7 @@ table {
 
 th, td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 5px; /* Reduce padding */
   text-align: left;
 }
 
