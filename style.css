@@ -12,9 +12,9 @@ body {
 
 #user-input-container {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin: 20px;
+  justify-content: flex-start; /* Align to the left */
+  align-items: flex-start; /* Align to the top */
+  gap: 20px; /* Adjust the gap between columns as needed */
 }
 
 .user-input-form {
