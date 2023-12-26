@@ -72,11 +72,24 @@ function addUserInput() {
       vectorLengthCell.textContent = vectorLengthInput;
       rotationSpeedCell.textContent = rotationSpeedInput;
   
+      // Add a button to delete the row
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = function() {
+        // Get the index of the row and delete it
+        const rowIndex = newRow.rowIndex - 1; // Subtract 1 to account for the header row
+        deleteUserInput(rowIndex);
+      };
+  
+      // Add the delete button to the row
+      const deleteCell = newRow.insertCell(2);
+      deleteCell.appendChild(deleteButton);
+  
       // Clear the input values
       document.getElementById('vectorLength').value = '';
       document.getElementById('rotationSpeed').value = '';
     }
-  }
+}
 
 function addRotationSpeed() {
     const rotationSpeedValue = document.getElementById('rotationSpeed').value;
@@ -99,6 +112,17 @@ function addRotationSpeed() {
       // Add the new rotation speed to the array
       rotationSpeeds.push(Number(rotationSpeedValue));
     }
+}
+
+
+function deleteUserInput(index) {
+    // Remove the selected row from the table
+    const tableBody = document.getElementById('user-input-table');
+    tableBody.deleteRow(index);
+  
+    // Remove the corresponding values from the arrays
+    vectorLengths.splice(index, 1);
+    rotationSpeeds.splice(index, 1);
 }
 
 function draw() {
