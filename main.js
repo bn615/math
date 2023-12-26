@@ -1,8 +1,12 @@
+const canvasWidth = 800;
+const canvasHeight = 600;
+
 
 function setup() {
-  const canvas = createCanvas(canvasWidth, canvasHeight);
-  canvas.parent('canvas-container');
-}
+    const canvas = createCanvas(canvasWidth, canvasHeight);
+    canvas.parent('canvas-container');
+    positionUserInput(); // Call the function to position the user input
+  }
 
 function positionUserInput() {
     const inputX = windowWidth / 2; // X position for the user input (centered horizontally)
