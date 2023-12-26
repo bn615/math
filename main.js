@@ -5,7 +5,7 @@ let vectorLengths = [];
 let rotationSpeeds = [];
 let points = [];
 
-let currentFrame = 0;
+let currentFrame = 1;
 let vectorPath = [];
 let endPointPath = [];
 
