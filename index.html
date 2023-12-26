@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +8,6 @@
 </head>
 <body>
   <div id="user-input-container">
-    <!-- User input form -->
-    <div class="user-input-form">
-      <label for="vectorLength">Enter a vector length:</label>
-      <input type="number" id="vectorLength" placeholder="Enter a value" />
-
-      <button onclick="addUserInput()">Add Input</button>
-
-      <label for="rotationSpeed">Enter a rotation speed:</label>
-      <input type="number" id="rotationSpeed" placeholder="Enter rotation speed" />
-
-      <button onclick="addRotationSpeed()">Add Rotation Speed</button>
-    </div>
-
     <!-- User input table -->
     <table>
       <thead>
@@ -31,6 +18,16 @@
       </thead>
       <tbody id="user-input-table"></tbody>
     </table>
+
+    <!-- User input form -->
+    <div class="user-input-form">
+        <label for="vectorLength">Enter a vector length:</label>
+        <input type="number" id="vectorLength" placeholder="Enter a value" />
+        
+        <label for="rotationSpeed">Enter a rotation speed:</label>
+        <input type="number" id="rotationSpeed" placeholder="Enter rotation speed" />
+        <button onclick="addUserInput()">Add Input</button>
+    </div>
   </div>
 
   <script src="libraries/p5.min.js"></script>
