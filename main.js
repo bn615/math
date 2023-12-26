@@ -6,12 +6,13 @@ let rotationSpeeds = [];
 let points = [];
 
 let currentFrame = 0;
+let setFramerate = 20;
 let endPointPath = [];
 
 
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
-    frameRate(20);
+    frameRate(setFramerate);
     canvas.parent('canvas-container');
     positionUserInput(); // Call the function to position the user input
 
@@ -157,13 +158,13 @@ function draw() {
     let n = i * 2 + 1;
 
     let radius = vectorLengths[i];
-    let speed = radians(rotationSpeeds[i]);
+    let speed = rotationSpeeds[i];
 
     let px = x;
     let py = y;
 
-    x += radius * cos(n * currentFrame * speed);
-    y += radius * sin(n * currentFrame * speed);
+    x += radius * cos(currentFrame * speed / setFramerate);
+    y += radius * sin(currentFrame * speed / setFramerate);
 
     stroke(0);
     line(px, py, x, y);
