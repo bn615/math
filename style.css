@@ -71,8 +71,7 @@ button:hover {
 }
 
 #canvas-container {
-  width: 40%;
-  text-align: center;
+  width: 800px;
   height: 600px;
   margin: 20px auto; /* Center horizontally */
   position: relative;
