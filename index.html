@@ -7,32 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="user-input-container">
+  <div id="container">
     <!-- User input form -->
-    <div class="user-input-form">
-      <label for="vectorLength">Enter a vector length:</label>
-      <input type="number" id="vectorLength" placeholder="Enter a value" />
+    <div id="user-input-container">
+      <div class="user-input-form">
+        <label for="vectorLength">Enter a vector length:</label>
+        <input type="number" id="vectorLength" placeholder="Enter a value" />
 
-      <label for="rotationSpeed">Enter a rotation speed:</label>
-      <input type="number" id="rotationSpeed" placeholder="Enter rotation speed" />
+        <label for="rotationSpeed">Enter a rotation speed:</label>
+        <input type="number" id="rotationSpeed" placeholder="Enter rotation speed" />
 
-      <button onclick="addUserInput()">Add Input</button>
+        <button onclick="addUserInput()">Add Input</button>
+      </div>
+
+      <!-- User input table -->
+      <table>
+        <thead>
+          <tr>
+            <th>Vector Length</th>
+            <th>Rotation Speed</th>
+          </tr>
+        </thead>
+        <tbody id="user-input-table"></tbody>
+      </table>
     </div>
 
-    <!-- User input table -->
-    <table id="user-input-table">
-      <thead>
-        <tr>
-          <th>Vector Length</th>
-          <th>Rotation Speed</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <!-- Canvas container -->
+    <div id="canvas-container">
+      <!-- Your canvas element -->
+      <canvas id="defaultCanvas0"></canvas>
+    </div>
   </div>
-
-  <!-- Canvas container -->
-  <div id="canvas-container"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
   <script src="libraries/p5.sound.min.js"></script>

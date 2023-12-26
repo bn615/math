@@ -10,10 +10,20 @@ body {
   color: #333;
 }
 
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
 #user-input-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align to the left */
+  align-items: flex-start;
+  margin-right: 20px; /* Adjust the right margin as needed */ 
 }
 
 .user-input-form input {
@@ -61,7 +71,8 @@ button:hover {
 }
 
 #canvas-container {
-  width: 800px;
+  width: 40%;
+  text-align: center;
   height: 600px;
   margin: 20px auto; /* Center horizontally */
   position: relative;
