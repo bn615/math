@@ -147,6 +147,8 @@ function draw() {
     fill(0); // Set the fill color to black
     noStroke(); // Disable stroke (outline)
     ellipse(width / 2, height / 2, 10, 10); // Draw an ellipse at the center
+
+    
   
     for (let i = 0; i < vectorLengths.length; i++) {
       let prevX = x;
@@ -166,7 +168,15 @@ function draw() {
       ellipse(prevX, prevY, 5, 5);
     }
   
-    // Draw the final point
+    noFill();
+    
+    beginShape();
+    stroke(124, 252, 0); // Set the stroke color to green
+    for (const point of points) {
+      vertex(point.x, point.y);
+    }
+    endShape();
+  
     fill(0);
     ellipse(x, y, 10, 10);
   
