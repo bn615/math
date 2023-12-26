@@ -13,8 +13,7 @@ body {
 #user-input-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-right: 20px; /* Adjust the right margin as needed */
+  align-items: flex-start; /* Align to the left */
 }
 
 .user-input-form input {
@@ -62,12 +61,11 @@ button:hover {
 }
 
 #canvas-container {
-  width: 40%;
+  width: 800px;
   height: 600px;
   margin: 20px auto; /* Center horizontally */
   position: relative;
   display: flex;
-  text-align: center;
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
   border: 1px solid #ddd;
