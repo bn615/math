@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align to the left */
+  height: 150px; /* Fixed height to prevent expansion */
 }
 
 .user-input-form input {
