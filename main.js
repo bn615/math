@@ -51,6 +51,33 @@ function addValue() {
   }
 }
 
+function addUserInput() {
+    const vectorLengthInput = document.getElementById('vectorLength').value;
+    const rotationSpeedInput = document.getElementById('rotationSpeed').value;
+  
+    if (vectorLengthInput !== '' && rotationSpeedInput !== '') {
+      // Add vector length and rotation speed to their respective arrays
+      vectorLengths.push(Number(vectorLengthInput));
+      rotationSpeeds.push(Number(rotationSpeedInput));
+  
+      // Add a new row to the user input table
+      const tableBody = document.getElementById('user-input-table');
+      const newRow = tableBody.insertRow();
+  
+      // Add cells to the new row
+      const vectorLengthCell = newRow.insertCell(0);
+      const rotationSpeedCell = newRow.insertCell(1);
+  
+      // Set the text content of the cells
+      vectorLengthCell.textContent = vectorLengthInput;
+      rotationSpeedCell.textContent = rotationSpeedInput;
+  
+      // Clear the input values
+      document.getElementById('vectorLength').value = '';
+      document.getElementById('rotationSpeed').value = '';
+    }
+  }
+
 function addRotationSpeed() {
     const rotationSpeedValue = document.getElementById('rotationSpeed').value;
     const tableBody = document.getElementById('user-input-table');
