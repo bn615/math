@@ -138,6 +138,9 @@ function deleteUserInput(index) {
 
 function draw() {
   background(255);
+
+  endPointPath = [];
+
   drawGrid(20, 20);
 
   let x = width / 2;
@@ -160,6 +163,10 @@ function draw() {
 
     x += radius * cos(n * currentFrame * speed);
     y += radius * sin(n * currentFrame * speed);
+
+    stroke(0);
+    line(prevX, prevY, x, y);
+    ellipse(prevX, prevY, 5, 5);
   }
 
   // Store only the endpoint of the last vector in the path array
