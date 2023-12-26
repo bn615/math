@@ -170,7 +170,6 @@ function draw() {
     currentFrame++;
   }
 
-
   function drawGrid(spacingX, spacingY) {
     stroke(200); // Set the stroke color to light gray
     strokeWeight(1); // Set the stroke weight to 1
