@@ -36,33 +36,38 @@ function positionUserInput() {
     secondColumn.style.position = 'absolute';
     secondColumn.style.left = rotationSpeedX + 'px';
     secondColumn.style.top = rotationSpeedY + 'px';
-  } 
+} 
 
 
-function addValue() {
+  function addValue() {
     const inputValue = document.getElementById('userInput').value;
     if (inputValue !== '') {
-      const inputContainer = document.getElementById('input-container');
-      
-      // Create a new div to contain the input element
-      const inputDiv = document.createElement('div');
-      inputDiv.style.marginBottom = '10px'; // Adjust the margin as needed
-      
-      // Create a new input element
-      const newInput = document.createElement('input');
-      newInput.type = 'number';
-      newInput.value = inputValue;
-      newInput.disabled = true;
-      
-      // Append the input element to the div
-      inputDiv.appendChild(newInput);
-      
-      // Append the div to the input container
-      inputContainer.appendChild(inputDiv);
-      
+      const tableBody = document.getElementById('user-input-table');
+  
+      // Create a new row for the table
+      const newRow = document.createElement('tr');
+  
+      // Create a cell for vector length
+      const vectorLengthCell = document.createElement('td');
+      vectorLengthCell.textContent = inputValue;
+      newRow.appendChild(vectorLengthCell);
+  
+      // Create a cell for rotation speed
+      const rotationSpeedCell = document.createElement('td');
+      newRow.appendChild(rotationSpeedCell);
+  
+      // Create a new input element for rotation speed
+      const rotationSpeedInput = document.createElement('input');
+      rotationSpeedInput.type = 'number';
+      rotationSpeedInput.placeholder = 'Enter rotation speed';
+      rotationSpeedCell.appendChild(rotationSpeedInput);
+  
+      // Append the new row to the table body
+      tableBody.appendChild(newRow);
+  
       // Add the new length to the array
       vectorLengths.push(Number(inputValue));
-      
+  
       // Add a corresponding point with (length, 0) coordinates
       points.push(new Point(Number(inputValue), 0));
     }
@@ -70,30 +75,27 @@ function addValue() {
   
 function addRotationSpeed() {
     const rotationSpeedValue = document.getElementById('rotationSpeed').value;
-    if (rotationSpeedValue !== '') {
-      const rotationSpeedContainer = document.getElementById('rotation-speed-container');
+    const tableBody = document.getElementById('user-input-table');
+    const lastRow = tableBody.lastChild;
   
-      // Create a new div to contain the input element
-      const rotationSpeedDiv = document.createElement('div');
-      rotationSpeedDiv.style.marginBottom = '10px'; // Adjust the margin as needed
+    if (rotationSpeedValue !== '' && lastRow) {
+      // Find the rotation speed cell in the last row
+      const rotationSpeedCell = lastRow.lastChild;
   
-      // Create a new input element
-      const newRotationSpeed = document.createElement('input');
-      newRotationSpeed.type = 'number';
-      newRotationSpeed.value = rotationSpeedValue;
-      newRotationSpeed.disabled = true;
+      // Create a new input element for rotation speed
+      const rotationSpeedInput = document.createElement('input');
+      rotationSpeedInput.type = 'number';
+      rotationSpeedInput.value = rotationSpeedValue;
+      rotationSpeedInput.disabled = true;
   
-      // Append the input element to the div
-      rotationSpeedDiv.appendChild(newRotationSpeed);
-  
-      // Append the div to the rotation speed container
-      rotationSpeedContainer.appendChild(rotationSpeedDiv);
+      // Append the new input element to the rotation speed cell
+      rotationSpeedCell.appendChild(rotationSpeedInput);
   
       // Add the new rotation speed to the array
       rotationSpeeds.push(Number(rotationSpeedValue));
     }
 }
-  
+
 function draw() {
     // Ensure that the arrays have the same length
     if (vectorLengths.length !== rotationSpeeds.length) {
