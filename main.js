@@ -5,11 +5,16 @@ let vectorLengths = [];
 let rotationSpeeds = [];
 let points = [];
 
+let currentFrame = 0;
+
 
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent('canvas-container');
+    
+    setInterval(draw, 10);
     positionUserInput(); // Call the function to position the user input
+
 }
 
 function positionUserInput() {
@@ -124,7 +129,6 @@ function deleteUserInput(index) {
     vectorLengths.splice(index, 1);
     rotationSpeeds.splice(index, 1);
 }
-
 function draw() {
     // Ensure that the arrays have the same length
     if (vectorLengths.length !== rotationSpeeds.length) {
@@ -132,26 +136,22 @@ function draw() {
       return;
     }
   
+    // Clear the canvas on each frame
+    background(255);
+  
+    // Update cumulPoint based on the current frame
     let cumulPoint = new Point(0, 0);
     let cumulAngle = 0;
   
-    for (let i = 0; i < vectorLengths.length; i++) {
-      cumulPoint = Point.rotate(cumulPoint, cumulPoint.add(points[i]), rotationSpeeds[i] + cumulAngle);
+    for (let i = 0; i < points.length; i++) {
+      cumulPoint = Point.rotate(cumulPoint, cumulPoint.add(points[i]), rotationSpeeds[i] * currentFrame / 100 + cumulAngle);
       cumulAngle += rotationSpeeds[i];
     }
   
     // Your drawing logic goes here using cumulPoint
-}  
-
-function mouseClicked() {
-}
-
-function keyPressed() {
-}
-
-function startDragging() {
-
-}
-
-function stopDragging() {
-}
+    fill(0);
+    ellipse(cumulPoint.x, cumulPoint.y, 10, 10);
+  
+    // Increment the frame counter
+    currentFrame++;
+  }
