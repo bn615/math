@@ -142,6 +142,8 @@ function deleteUserInput(index) {
 function draw() {
   background(255);
 
+
+  cumSpeeds = [0]; 
  
 
   drawGrid(20, 20);
@@ -165,8 +167,8 @@ function draw() {
     let px = x;
     let py = y;
 
-    x += radius * cos(currentFrame * cumSpeeds[i] / setFramerate);
-    y += radius * sin(currentFrame * cumSpeeds[i] / setFramerate);
+    x += radius * cos(currentFrame * cumSpeeds[i + 1] / setFramerate);
+    y += radius * sin(currentFrame * cumSpeeds[i + 1] / setFramerate);
 
     stroke(0);
     line(px, py, x, y);
