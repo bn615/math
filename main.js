@@ -139,7 +139,7 @@ function deleteUserInput(index) {
 function draw() {
   background(255);
 
-  endPointPath = [];
+  
 
   drawGrid(20, 20);
 
