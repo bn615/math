@@ -1,14 +1,14 @@
 const canvasWidth = 800;
 const canvasHeight = 600;
-let arr = []; // Array to store points
+
 
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent('canvas-container');
     positionUserInput(); // Call the function to position the user input
-}
+  }
 
-function positionUserInput() {
+  function positionUserInput() {
     const inputX = windowWidth / 2; // X position for the user input (centered horizontally)
     const inputY = 100; // Y position for the user input above the coordinates header
     const userInput = document.getElementById('userInput');
@@ -28,14 +28,25 @@ function addValue() {
     const inputValue = document.getElementById('userInput').value;
     if (inputValue !== '') {
         const inputContainer = document.getElementById('input-container');
+        
+        // Create a new div to contain the input element
+        const inputDiv = document.createElement('div');
+        inputDiv.style.marginBottom = '10px'; // Adjust the margin as needed
+        
+        // Create a new input element
         const newInput = document.createElement('input');
         newInput.type = 'number';
         newInput.value = inputValue;
         newInput.disabled = true;
-        inputContainer.appendChild(newInput);
-
+        
+        // Append the input element to the div
+        inputDiv.appendChild(newInput);
+        
+        // Append the div to the input container
+        inputContainer.appendChild(inputDiv);
+        
         // Add the new point to the array
-        arr.push(new Point(Number(inputValue), 0));
+        arr.push(new Point(0, Number(inputValue))); // Modified to accumulate vertically
     }
 }
 
@@ -46,11 +57,9 @@ function draw() {
     let cumulAngle = 0;
 
     for (let i = 0; i < arr.length; i++) {
-        cumulPoint = Point.rotate(cumulPoint, arr[i].add(cumulPoint), rotatingSpeed[i] + cumulAngle);
+        cumulPoint = Point.rotate(cumulPoint, cumulPoint.add(arr[i]), rotatingSpeed[i] + cumulAngle);
         cumulAngle += rotatingSpeed[i];
     }
-
-    // Your drawing logic goes here using cumulPoint
 }
 
 function mouseClicked() {
@@ -60,6 +69,7 @@ function keyPressed() {
 }
 
 function startDragging() {
+
 }
 
 function stopDragging() {
