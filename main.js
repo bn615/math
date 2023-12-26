@@ -84,7 +84,7 @@ function addUserInput() {
       deleteButton.textContent = 'Delete';
       deleteButton.onclick = function() {
         // Get the index of the row and delete it
-        const rowIndex = newRow.rowIndex; // Subtract 1 to account for the header row
+        const rowIndex = newRow.rowIndex;
         deleteUserInput(rowIndex);
       };
   
@@ -128,8 +128,8 @@ function deleteUserInput(index) {
     tableBody.deleteRow(index);
   
     // Remove the corresponding values from the arrays
-    vectorLengths.splice(index, 1);
-    rotationSpeeds.splice(index, 1);
+    vectorLengths.splice(index - 1, 1);
+    rotationSpeeds.splice(index - 1, 1);
 }
 
 
