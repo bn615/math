@@ -19,7 +19,7 @@ body {
 
 .user-input-form input {
   width: 120px; /* Adjust the width of the input boxes as needed */
-  height: 50px;
+  height: 30px;
 }
 
 #user-input-table {
@@ -63,8 +63,8 @@ button:hover {
 }
 
 #canvas-container {
-  width: 1000px;
-  height: 1000px;
+  width: 1000px; /* Update the width to 1000px */
+  height: 1000px; /* Update the height to 1000px */
   margin: 20px auto; /* Center horizontally */
   position: relative;
   border: 1px solid #ddd;
