@@ -127,6 +127,7 @@ function deleteUserInput(index) {
     // Remove the selected row from the table
     const tableBody = document.getElementById('user-input-table');
     tableBody.deleteRow(index);
+    endPointPath = [];
   
     // Remove the corresponding values from the arrays
     vectorLengths.splice(index - 1, 1);
