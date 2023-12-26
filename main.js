@@ -129,31 +129,34 @@ function deleteUserInput(index) {
 }
 
 
+
 function draw() {
-  // Ensure that the arrays have the same length
-  if (vectorLengths.length !== rotationSpeeds.length) {
-    console.error('Vector lengths and rotation speeds arrays must have the same length.');
-    return;
+    background(255);
+  
+    let x = width / 2;
+    let y = height / 2;
+  
+    for (let i = 0; i < vectorLengths.length; i++) {
+      let prevX = x;
+      let prevY = y;
+  
+      let n = i * 2 + 1; // Adjust this factor for more or fewer rotations
+  
+      let radius = vectorLengths[i];
+      let speed = radians(rotationSpeeds[i]);
+  
+      x += radius * cos(n * currentFrame * speed);
+      y += radius * sin(n * currentFrame * speed);
+  
+      // Draw the vector
+      stroke(0);
+      line(prevX, prevY, x, y);
+      ellipse(prevX, prevY, 5, 5);
+    }
+  
+    // Draw the final point
+    fill(0);
+    ellipse(x, y, 10, 10);
+  
+    currentFrame++;
   }
-
-  // Clear the canvas on each frame
-  background(255);
-
-  // Update cumulPoint based on the current frame
-  let cumulPoint = createVector(0, 0);
-  let cumulAngle = 0;
-
-  for (let i = 0; i < vectorLengths.length; i++) {
-    const angle = rotationSpeeds[i] * currentFrame / 100 + cumulAngle;
-    const vector = createVector(vectorLengths[i] * cos(angle), vectorLengths[i] * sin(angle));
-    cumulPoint.add(vector);
-    cumulAngle += rotationSpeeds[i];
-  }
-
-  // Your drawing logic goes here using cumulPoint
-  fill(0);
-  ellipse(cumulPoint.x, cumulPoint.y, 10, 10);
-
-  // Increment the frame counter
-  currentFrame++;
-}
