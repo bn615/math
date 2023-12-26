@@ -3,6 +3,7 @@ const canvasHeight = 1000;
 
 let vectorLengths = [];
 let rotationSpeeds = [];
+let cumSpeeds = [0];
 let points = [];
 
 let currentFrame = 0;
@@ -153,18 +154,19 @@ function draw() {
   ellipse(width / 2, height / 2, 10, 10);
 
   stroke(0);
-
+  
   for (let i = 0; i < vectorLengths.length; i++) {
-    let n = i * 2 + 1;
-
     let radius = vectorLengths[i];
+    
     let speed = rotationSpeeds[i];
-
+    
+    cumSpeeds.push(cumSpeeds[i] + speed);
+    
     let px = x;
     let py = y;
 
-    x += radius * cos(currentFrame * speed / setFramerate);
-    y += radius * sin(currentFrame * speed / setFramerate);
+    x += radius * cos(currentFrame * cumSpeeds[i + 1] / setFramerate);
+    y += radius * sin(currentFrame * cumSpeeds[i + 1] / setFramerate);
 
     stroke(0);
     line(px, py, x, y);
