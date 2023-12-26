@@ -6,7 +6,7 @@ let rotationSpeeds = [];
 let points = [];
 
 let currentFrame = 0;
-let setFramerate = 20;
+let setFramerate = 50;
 let endPointPath = [];
 
 
