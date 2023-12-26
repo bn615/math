@@ -13,23 +13,30 @@ function setup() {
 }
 
 function positionUserInput() {
-    const inputX = windowWidth / 2; // X position for the user input (centered horizontally)
-    const inputY = 100; // Y position for the user input above the coordinates header
-    const userInput = document.getElementById('userInput');
-    userInput.style.position = 'absolute';
-    userInput.style.left = inputX + 'px';
-    userInput.style.top = inputY + 'px';
-
-    const labelX = windowWidth / 2; // X position for the label (centered horizontally)
-    const labelY = 70; // Y position for the label above the user input
-    const inputLabel = document.getElementById('input-label'); // Assuming you have a label with this id
-    inputLabel.style.position = 'absolute';
-    inputLabel.style.left = labelX + 'px';
-    inputLabel.style.top = labelY + 'px';
     const userContainer = document.getElementById('user-input-container');
-  userContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
-  userContainer.style.gap = '20px'; // Adjust the gap between columns as needed
-}
+    userContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
+    userContainer.style.gap = '20px'; // Adjust the gap between columns as needed
+  
+    // Position the first user input column
+    const firstColumn = document.querySelector('.user-input-column:nth-child(1)');
+    firstColumn.style.flex = '1'; // Adjust flex property as needed
+  
+    const inputX = windowWidth / 4; // X position for the user input column (centered horizontally)
+    const inputY = 100; // Y position for the user input above the coordinates header
+    firstColumn.style.position = 'absolute';
+    firstColumn.style.left = inputX + 'px';
+    firstColumn.style.top = inputY + 'px';
+  
+    // Position the second user input column
+    const secondColumn = document.querySelector('.user-input-column:nth-child(2)');
+    secondColumn.style.flex = '1'; // Adjust flex property as needed
+  
+    const rotationSpeedX = (windowWidth / 4) * 3; // X position for the rotation speed column (centered horizontally)
+    const rotationSpeedY = 100; // Y position for the rotation speed above the coordinates header
+    secondColumn.style.position = 'absolute';
+    secondColumn.style.left = rotationSpeedX + 'px';
+    secondColumn.style.top = rotationSpeedY + 'px';
+  } 
 
 
 function addValue() {
