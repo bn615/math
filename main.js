@@ -1,8 +1,8 @@
 const canvasWidth = 800;
 const canvasHeight = 600;
 
-let rotationSpeeds = [];
 let vectorLengths = [];
+let rotationSpeeds = [];
 let points = [];
 
 
@@ -13,66 +13,44 @@ function setup() {
 }
 
 function positionUserInput() {
-    const userContainer = document.getElementById('user-input-container');
-    userContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
-    userContainer.style.gap = '20px'; // Adjust the gap between columns as needed
+    const userInputContainer = document.getElementById('user-input-container');
+    userInputContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
+    userInputContainer.style.gap = '20px'; // Adjust the gap between columns as needed
   
-    // Position the first user input column
-    const firstColumn = document.querySelector('.user-input-column:nth-child(1)');
-    firstColumn.style.flex = '1'; // Adjust flex property as needed
+    // Position the user input form
+    const userForm = document.querySelector('.user-input-form');
+    userForm.style.flex = '1'; // Adjust flex property as needed
   
-    const inputX = windowWidth / 4; // X position for the user input column (centered horizontally)
-    const inputY = 100; // Y position for the user input above the coordinates header
-    firstColumn.style.position = 'absolute';
-    firstColumn.style.left = inputX + 'px';
-    firstColumn.style.top = inputY + 'px';
-  
-    // Position the second user input column
-    const secondColumn = document.querySelector('.user-input-column:nth-child(2)');
-    secondColumn.style.flex = '1'; // Adjust flex property as needed
-  
-    const rotationSpeedX = (windowWidth / 4) * 3; // X position for the rotation speed column (centered horizontally)
-    const rotationSpeedY = 100; // Y position for the rotation speed above the coordinates header
-    secondColumn.style.position = 'absolute';
-    secondColumn.style.left = rotationSpeedX + 'px';
-    secondColumn.style.top = rotationSpeedY + 'px';
-} 
-
-
-  function addValue() {
-    const inputValue = document.getElementById('userInput').value;
-    if (inputValue !== '') {
-      const tableBody = document.getElementById('user-input-table');
-  
-      // Create a new row for the table
-      const newRow = document.createElement('tr');
-  
-      // Create a cell for vector length
-      const vectorLengthCell = document.createElement('td');
-      vectorLengthCell.textContent = inputValue;
-      newRow.appendChild(vectorLengthCell);
-  
-      // Create a cell for rotation speed
-      const rotationSpeedCell = document.createElement('td');
-      newRow.appendChild(rotationSpeedCell);
-  
-      // Create a new input element for rotation speed
-      const rotationSpeedInput = document.createElement('input');
-      rotationSpeedInput.type = 'number';
-      rotationSpeedInput.placeholder = 'Enter rotation speed';
-      rotationSpeedCell.appendChild(rotationSpeedInput);
-  
-      // Append the new row to the table body
-      tableBody.appendChild(newRow);
-  
-      // Add the new length to the array
-      vectorLengths.push(Number(inputValue));
-  
-      // Add a corresponding point with (length, 0) coordinates
-      points.push(new Point(Number(inputValue), 0));
-    }
+    const formX = window.innerWidth / 4; // X position for the user input form (centered horizontally)
+    const formY = 100; // Y position for the user input above the coordinates header
+    userForm.style.position = 'absolute';
+    userForm.style.left = formX + 'px';
+    userForm.style.top = formY + 'px';
   }
-  
+
+function addValue() {
+  const inputValue = document.getElementById('userInput').value;
+  if (inputValue !== '') {
+    // Add vector length to the array
+    vectorLengths.push(Number(inputValue));
+
+    // Add a new row to the user input table
+    const tableBody = document.getElementById('user-input-table');
+    const newRow = tableBody.insertRow();
+
+    // Add cells to the new row
+    const vectorLengthCell = newRow.insertCell(0);
+    const rotationSpeedCell = newRow.insertCell(1);
+
+    // Set the text content of the cells
+    vectorLengthCell.textContent = inputValue;
+    rotationSpeedCell.textContent = ''; // Leave rotation speed cell empty
+
+    // Clear the input value
+    document.getElementById('userInput').value = '';
+  }
+}
+
 function addRotationSpeed() {
     const rotationSpeedValue = document.getElementById('rotationSpeed').value;
     const tableBody = document.getElementById('user-input-table');
