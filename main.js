@@ -67,7 +67,7 @@ function addUserInput() {
       // Add vector length and rotation speed to their respective arrays
       vectorLengths.push(Number(vectorLengthInput));
       rotationSpeeds.push(Number(rotationSpeedInput));
-  
+      endPointPath = [];
       // Add a new row to the user input table
       const tableBody = document.getElementById('user-input-table');
       const newRow = tableBody.insertRow();
@@ -139,7 +139,7 @@ function deleteUserInput(index) {
 function draw() {
   background(255);
 
-  endPointPath = [];
+ 
 
   drawGrid(20, 20);
 
