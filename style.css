@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #canvas-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 150px;
+  }
+  
+  #controls-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #coordinates {
+    width: 25%; /* Decrease the width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 150px; /* Add padding to the right */
+  }
+  
+  #slider-container {
+    margin-top: 50px;
+  }
+  
+  #dropdown-container {
+    margin-top: 110px; /* Increase margin to create more space */
+  }
+  
+  #download {
+    margin-top: 50px;
+  }
+  
+  #dots {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
