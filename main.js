@@ -1,6 +1,9 @@
 const canvasWidth = 800;
 const canvasHeight = 600;
 
+let rotationSpeeds = [];
+
+
 
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
@@ -22,8 +25,35 @@ function setup() {
     inputLabel.style.position = 'absolute';
     inputLabel.style.left = labelX + 'px';
     inputLabel.style.top = labelY + 'px';
+    const userContainer = document.getElementById('user-input-container');
+    userContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
 }
 
+function addRotationSpeed() {
+    const rotationSpeedValue = document.getElementById('rotationSpeed').value;
+    if (rotationSpeedValue !== '') {
+      const rotationSpeedContainer = document.getElementById('rotation-speed-container');
+  
+      // Create a new div to contain the input element
+      const rotationSpeedDiv = document.createElement('div');
+      rotationSpeedDiv.style.marginBottom = '10px'; // Adjust the margin as needed
+  
+      // Create a new input element
+      const newRotationSpeed = document.createElement('input');
+      newRotationSpeed.type = 'number';
+      newRotationSpeed.value = rotationSpeedValue;
+      newRotationSpeed.disabled = true;
+  
+      // Append the input element to the div
+      rotationSpeedDiv.appendChild(newRotationSpeed);
+  
+      // Append the div to the rotation speed container
+      rotationSpeedContainer.appendChild(rotationSpeedDiv);
+  
+      // Add the new rotation speed to the array
+      rotationSpeeds.push(Number(rotationSpeedValue));
+    }
+}
 function addValue() {
     const inputValue = document.getElementById('userInput').value;
     if (inputValue !== '') {
@@ -51,7 +81,7 @@ function addValue() {
 }
 
 function draw() {
-    const rotatingSpeed = [Math.PI / 6, Math.PI / 6, Math.PI / 6];
+    const rotatingSpeed = rotationSpeeds;
 
     let cumulPoint = new Point(0, 0);
     let cumulAngle = 0;
