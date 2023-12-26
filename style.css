@@ -1,4 +1,3 @@
-/* Resetting some default browser styles */
 body, h1, h2, p, table, button, input {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@ body {
 
 #user-input-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   margin: 20px;
 }
@@ -22,7 +21,7 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 }
 
 table {
@@ -38,6 +37,7 @@ th, td {
 
 th {
   background-color: #f2f2f2;
+  font-size: 14px; /* Adjust the font size as needed */
 }
 
 button {
