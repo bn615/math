@@ -11,8 +11,6 @@ let currentFrame = 0;
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent('canvas-container');
-    
-    setInterval(draw, 10);
     positionUserInput(); // Call the function to position the user input
 
 }
@@ -129,29 +127,33 @@ function deleteUserInput(index) {
     vectorLengths.splice(index, 1);
     rotationSpeeds.splice(index, 1);
 }
+
+
 function draw() {
-    // Ensure that the arrays have the same length
-    if (vectorLengths.length !== rotationSpeeds.length) {
-      console.error('Vector lengths and rotation speeds arrays must have the same length.');
-      return;
-    }
-  
-    // Clear the canvas on each frame
-    background(255);
-  
-    // Update cumulPoint based on the current frame
-    let cumulPoint = new Point(0, 0);
-    let cumulAngle = 0;
-  
-    for (let i = 0; i < points.length; i++) {
-      cumulPoint = Point.rotate(cumulPoint, cumulPoint.add(points[i]), rotationSpeeds[i] * currentFrame / 100 + cumulAngle);
-      cumulAngle += rotationSpeeds[i];
-    }
-  
-    // Your drawing logic goes here using cumulPoint
-    fill(0);
-    ellipse(cumulPoint.x, cumulPoint.y, 10, 10);
-  
-    // Increment the frame counter
-    currentFrame++;
+  // Ensure that the arrays have the same length
+  if (vectorLengths.length !== rotationSpeeds.length) {
+    console.error('Vector lengths and rotation speeds arrays must have the same length.');
+    return;
   }
+
+  // Clear the canvas on each frame
+  background(255);
+
+  // Update cumulPoint based on the current frame
+  let cumulPoint = createVector(0, 0);
+  let cumulAngle = 0;
+
+  for (let i = 0; i < vectorLengths.length; i++) {
+    const angle = rotationSpeeds[i] * currentFrame / 100 + cumulAngle;
+    const vector = createVector(vectorLengths[i] * cos(angle), vectorLengths[i] * sin(angle));
+    cumulPoint.add(vector);
+    cumulAngle += rotationSpeeds[i];
+  }
+
+  // Your drawing logic goes here using cumulPoint
+  fill(0);
+  ellipse(cumulPoint.x, cumulPoint.y, 10, 10);
+
+  // Increment the frame counter
+  currentFrame++;
+}
