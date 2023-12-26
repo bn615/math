@@ -5,7 +5,7 @@ let vectorLengths = [];
 let rotationSpeeds = [];
 let points = [];
 
-let currentFrame = 1;
+let currentFrame = 0;
 let vectorPath = [];
 let endPointPath = [];
 
@@ -135,71 +135,69 @@ function deleteUserInput(index) {
 }
 
 
+
 function draw() {
-  background(255);
-  drawGrid(20, 20);
+    background(255);
+  
+    drawGrid(20, 20); // Adjust the grid spacing as needed
+        
 
-  let x = width / 2;
-  let y = height / 2;
+    let x = width / 2;
+    let y = height / 2;
 
-  fill(0);
-  noStroke();
-  ellipse(width / 2, height / 2, 10, 10);
 
-  stroke(0);
+    fill(0); // Set the fill color to black
+    noStroke(); // Disable stroke (outline)
+    ellipse(width / 2, height / 2, 10, 10); // Draw an ellipse at the center
 
-  for (let i = 0; i < vectorLengths.length; i++) {
-    let n = i * 2 + 1;
+    
+  
+    for (let i = 0; i < vectorLengths.length; i++) {
+      let prevX = x;
+      let prevY = y;
+  
+      let n = 1; // Adjust this factor for more or fewer rotations
+  
+      let radius = vectorLengths[i];
+      let speed = radians(rotationSpeeds[i]);
+  
+      x += radius * cos(n * currentFrame * speed);
+      y += radius * sin(n * currentFrame * speed);
+  
+      vectorPath.push(createVector(x, y));
+      // Draw the vector
+      stroke(0);
+      line(prevX, prevY, x, y);
+      ellipse(prevX, prevY, 5, 5);
+    }
+  
+    noFill();
+    
+    beginShape();
+    stroke(124, 252, 0); // Set the stroke color to green
+    for (const point of points) {
+      vertex(point.x, point.y);
+    }
 
-    let radius = vectorLengths[i];
-    let speed = radians(rotationSpeeds[i]);
-
-    let px = x;
-    let py = y;
-
-    x += radius * cos(n * currentFrame * speed);
-    y += radius * sin(n * currentFrame * speed);
-
-    // Store the path points
-    vectorPath.push(createVector(x, y));
-
-    // Draw the vector
-    line(px, py, x, y);
-    ellipse(px, py, 5, 5);
+    endShape();
+  
+    fill(0);
+    ellipse(x, y, 10, 10);
+  
+    currentFrame++;
   }
 
-  // Highlight the path traced out by the endpoint of the last vector
-  stroke(0, 255, 0);
-  for (let i = 1; i < endPointPath.length; i++) {
-    line(endPointPath[i - 1].x, endPointPath[i - 1].y, endPointPath[i].x, endPointPath[i].y);
+  function drawGrid(spacingX, spacingY) {
+    stroke(200); // Set the stroke color to light gray
+    strokeWeight(1); // Set the stroke weight to 1
+  
+    // Draw vertical lines
+    for (let x = 0; x <= width; x += spacingX) {
+      line(x, 0, x, height);
+    }
+  
+    // Draw horizontal lines
+    for (let y = 0; y <= height; y += spacingY) {
+      line(0, y, width, y);
+    }
   }
-
-  // Store the endpoint in the path array
-  endPointPath.push(createVector(x, y));
-
-  // Draw the permanent paths
-  noFill();
-  beginShape();
-  for (const point of vectorPath) {
-    vertex(point.x, point.y);
-  }
-  endShape();
-
-  fill(0);
-  ellipse(x, y, 10, 10);
-
-  currentFrame++;
-}
-
-function drawGrid(spacingX, spacingY) {
-  stroke(200);
-  strokeWeight(1);
-
-  for (let x = 0; x <= width; x += spacingX) {
-    line(x, 0, x, height);
-  }
-
-  for (let y = 0; y <= height; y += spacingY) {
-    line(0, y, width, y);
-  }
-}
