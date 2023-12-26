@@ -16,21 +16,24 @@ function setup() {
 
 }
 
+
 function positionUserInput() {
-    const userInputContainer = document.getElementById('user-input-container');
-    userInputContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
-    userInputContainer.style.gap = '20px'; // Adjust the gap between columns as needed
-  
-    // Position the user input form
-    const userForm = document.querySelector('.user-input-form');
-    userForm.style.flex = '1'; // Adjust flex property as needed
-  
-    const formX = window.innerWidth / 4; // X position for the user input form (centered horizontally)
-    const formY = 100; // Y position for the user input above the coordinates header
-    userForm.style.position = 'absolute';
-    userForm.style.left = formX + 'px';
-    userForm.style.top = formY + 'px';
-  }
+  const userInputContainer = document.getElementById('user-input-container');
+  userInputContainer.style.display = 'flex'; // Use flexbox to arrange columns horizontally
+  userInputContainer.style.gap = '20px'; // Adjust the gap between columns as needed
+
+  // Position the user input form
+  const userForm = document.querySelector('.user-input-form');
+  userForm.style.flex = '1'; // Adjust flex property as needed
+  userForm.style.marginRight = '20px'; // Add margin to the right to create space
+
+  const formX = window.innerWidth / 4; // X position for the user input form (centered horizontally)
+  const formY = 100; // Y position for the user input above the coordinates header
+  userForm.style.position = 'absolute';
+  userForm.style.left = formX + 'px';
+  userForm.style.top = formY + 'px';
+}
+
 
 function addValue() {
   const inputValue = document.getElementById('userInput').value;
