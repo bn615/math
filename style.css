@@ -16,8 +16,12 @@ body {
   align-items: flex-start; /* Align to the left */
 }
 
+.user-input-form input {
+  width: 80px; /* Adjust the width of the input boxes as needed */
+}
+
 #user-input-table {
-  width: 50%; /* Adjust the width as needed */
+  width: 25%; /* Adjust the width of the table as needed */
   margin-top: 20px; /* Add margin to the top */
 }
 
