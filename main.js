@@ -10,6 +10,7 @@ let currentFrame = 0;
 
 function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
+    frameRate(20);
     canvas.parent('canvas-container');
     positionUserInput(); // Call the function to position the user input
 
