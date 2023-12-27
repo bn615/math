@@ -70,6 +70,7 @@ function addUserInput() {
       vectorLengths.push(Number(vectorLengthInput));
       rotationSpeeds.push(Number(rotationSpeedInput));
       endPointPath = [];
+      currentFrame = 0;
       // Add a new row to the user input table
       const tableBody = document.getElementById('user-input-table');
       const newRow = tableBody.insertRow();
@@ -130,6 +131,7 @@ function deleteUserInput(index) {
     const tableBody = document.getElementById('user-input-table');
     tableBody.deleteRow(index);
     endPointPath = [];
+    currentFrame = 0;
   
     // Remove the corresponding values from the arrays
     vectorLengths.splice(index - 1, 1);
@@ -142,9 +144,7 @@ function deleteUserInput(index) {
 function draw() {
   background(255);
 
-
-  cumSpeeds = [0]; 
- 
+  cumSpeeds = [0];  
 
   drawGrid(20, 20);
 
