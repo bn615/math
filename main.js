@@ -161,8 +161,14 @@ function draw() {
     let radius = vectorLengths[i];
     
     let speed = rotationSpeeds[i];
+
     
-    cumSpeeds.push(cumSpeeds[i] + speed);
+    if((speed > 0 && cumSpeeds[i] >= 0) || (speed < 0 && cumSpeeds[i] <= 0)){
+      cumSpeeds.push(cumSpeeds[i] + speed);
+    }
+    if((speed > 0 && cumSpeeds[i] < 0) || (speed < 0 && cumSpeeds[i] > 0)){
+      cumSpeeds.push(speed);
+    }
     
     let px = x;
     let py = y;
