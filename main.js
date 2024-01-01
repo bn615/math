@@ -166,6 +166,7 @@ function editCellValue(cell) {
   cell.innerHTML = '';
   cell.appendChild(input);
   input.focus();
+  currentFrame = 0;
   endPointPath = [];
 }
 
@@ -191,7 +192,6 @@ function draw() {
 
   cumSpeeds = [0];  
 
-  currentFrame = 0;
 
   drawGrid(20, 20);
 
