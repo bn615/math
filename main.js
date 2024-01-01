@@ -184,7 +184,7 @@ function updateArraysFromTable() {
     vectorLengths.push(Number(vectorLengthCell.textContent));
     rotationSpeeds.push(Number(rotationSpeedCell.textContent));
   }
-  endPointPath = [];
+  
 }
 
 // Draw function
