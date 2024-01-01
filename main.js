@@ -191,19 +191,19 @@ function draw() {
 
   cumSpeeds = [0];  
 
-  updateArraysFromTable();
+  
 
   drawGrid(20, 20);
 
   let x = width / 2;
   let y = height / 2;
-
+  updateArraysFromTable();
   fill(0);
   noStroke();
   ellipse(width / 2, height / 2, 10, 10);
 
   stroke(0);
-  let endPointPath = [];
+  
   for (let i = 0; i < vectorLengths.length; i++) {
     let radius = vectorLengths[i];
     
