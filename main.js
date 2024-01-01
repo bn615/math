@@ -233,15 +233,15 @@ function draw() {
 
   // Highlight the path traced out by the endpoint of the last vector
   stroke(0, 255, 0);
-  for (let i = 1; i < endPointPath.length; i++) {
+  for (let i = 2; i < endPointPath.length; i++) {
     line(endPointPath[i - 1].x, endPointPath[i - 1].y, endPointPath[i].x, endPointPath[i].y);
   }
 
   // Draw the permanent paths
   noFill();
   beginShape();
-
-  for (let i = 2; i < endPointPath.length; i++) {
+  
+  for (const point of endPointPath) {
     vertex(point.x, point.y);
   }
   endShape();
