@@ -191,7 +191,7 @@ function draw() {
 
   cumSpeeds = [0];  
 
-  
+  currentFrame = 0;
 
   drawGrid(20, 20);
 
