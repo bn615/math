@@ -30,7 +30,7 @@ function positionUserInput() {
   userForm.style.flex = '1'; // Adjust flex property as needed
   userForm.style.marginRight = '20px'; // Add margin to the right to create space
 
-  const formX = window.innerWidth / 4 + 1000; // X position for the user input form (centered horizontally)
+  const formX = window.innerWidth * 5 / 6; // X position for the user input form 
   const formY = 100; // Y position for the user input above the coordinates header
   userForm.style.position = 'absolute';
   userForm.style.left = formX + 'px';
