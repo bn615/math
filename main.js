@@ -231,13 +231,18 @@ function draw() {
   // Store only the endpoint of the last vector in the path array
   endPointPath.push(createVector(x, y));
 
-  // Highlight the path traced out by the endpoint of the last vector
-  stroke(0, 255, 0);
-  for (let i = 1; i < endPointPath.length; i++) {
-    line(endPointPath[i - 1].x, endPointPath[i - 1].y, endPointPath[i].x, endPointPath[i].y);
-    
+  
+  // Draw the permanent paths
+  noFill();
+  beginShape();
+  
+  for (const point of endPointPath) {
+    vertex(point.x, point.y);
   }
+  endShape();
 
+  fill(0);
+  ellipse(x, y, 10, 10);
   
 
   currentFrame++;
