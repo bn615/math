@@ -152,6 +152,7 @@ function TableEventListeners() {
 }
 function editCellValue(cell) {
   const currentValue = cell.textContent;
+  endPointPath = [];
   const input = document.createElement('input');
   input.type = 'text';
   input.value = currentValue;
@@ -172,7 +173,7 @@ function updateArraysFromTable() {
 
   const table = document.getElementById('user-input-table');
   const rows = table.rows;
-
+  endPointPath = [];
   for (let i = 1; i < rows.length; i++) {
     const vectorLengthCell = rows[i].cells[0];
     const rotationSpeedCell = rows[i].cells[1];
@@ -189,7 +190,7 @@ function draw() {
   cumSpeeds = [0];  
 
   updateArraysFromTable();
-  
+
   drawGrid(20, 20);
 
   let x = width / 2;
