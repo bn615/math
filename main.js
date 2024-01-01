@@ -70,7 +70,7 @@ function addUserInput() {
       // Add vector length and rotation speed to their respective arrays
       vectorLengths.push(Number(vectorLengthInput));
       rotationSpeeds.push(Number(rotationSpeedInput));
-      endPointPath = [];
+      
       currentFrame = 0;
       // Add a new row to the user input table
       const tableBody = document.getElementById('user-input-table');
@@ -101,6 +101,7 @@ function addUserInput() {
       document.getElementById('vectorLength').value = '';
       document.getElementById('rotationSpeed').value = '';
       TableEventListeners();
+      endPointPath = [];
     }
 }
 
@@ -132,13 +133,14 @@ function deleteUserInput(index) {
     // Remove the selected row from the table
     const tableBody = document.getElementById('user-input-table');
     tableBody.deleteRow(index);
-    endPointPath = [];
+    
     currentFrame = 0;
   
     // Remove the corresponding values from the arrays
     vectorLengths.splice(index - 1, 1);
     rotationSpeeds.splice(index - 1, 1);
     TableEventListeners();
+    endPointPath = [];
 }
 
 function TableEventListeners() {
@@ -152,7 +154,6 @@ function TableEventListeners() {
 }
 function editCellValue(cell) {
   const currentValue = cell.textContent;
-  endPointPath = [];
   const input = document.createElement('input');
   input.type = 'text';
   input.value = currentValue;
@@ -165,6 +166,7 @@ function editCellValue(cell) {
   cell.innerHTML = '';
   cell.appendChild(input);
   input.focus();
+  endPointPath = [];
 }
 
 function updateArraysFromTable() {
