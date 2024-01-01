@@ -184,6 +184,7 @@ function updateArraysFromTable() {
     vectorLengths.push(Number(vectorLengthCell.textContent));
     rotationSpeeds.push(Number(rotationSpeedCell.textContent));
   }
+  endPointPath = [];
 }
 
 // Draw function
@@ -231,11 +232,12 @@ function draw() {
   // Store only the endpoint of the last vector in the path array
   endPointPath.push(createVector(x, y));
 
-  
   // Draw the permanent paths
   noFill();
   beginShape();
-  
+
+  stroke(0, 255, 0);
+
   for (const point of endPointPath) {
     vertex(point.x, point.y);
   }
