@@ -15,7 +15,8 @@ function setup() {
     const canvas = createCanvas(canvasWidth, canvasHeight);
     frameRate(setFramerate);
     canvas.parent('canvas-container');
-    positionUserInput(); // Call the function to position the user input
+    positionUserInput(); 
+    TableEventListeners();
 
 }
 
@@ -31,7 +32,7 @@ function positionUserInput() {
   userForm.style.marginRight = '20px'; // Add margin to the right to create space
 
   const formX = window.innerWidth * 5 / 6; // X position for the user input form 
-  const formY = 100; // Y position for the user input above the coordinates header
+  const formY = 100; // Y position for the user input
   userForm.style.position = 'absolute';
   userForm.style.left = formX + 'px';
   userForm.style.top = formY + 'px';
@@ -99,6 +100,7 @@ function addUserInput() {
       // Clear the input values
       document.getElementById('vectorLength').value = '';
       document.getElementById('rotationSpeed').value = '';
+      TableEventListeners();
     }
 }
 
@@ -136,16 +138,58 @@ function deleteUserInput(index) {
     // Remove the corresponding values from the arrays
     vectorLengths.splice(index - 1, 1);
     rotationSpeeds.splice(index - 1, 1);
+    TableEventListeners();
 }
 
+function TableEventListeners() {
+  const table = document.getElementById('user-input-table');
+  table.addEventListener('click', function(event) {
+    const cell = event.target;
+    if (cell.tagName === 'TD') {
+      editCellValue(cell);
+    }
+  });
+}
+function editCellValue(cell) {
+  const currentValue = cell.textContent;
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentValue;
+  input.addEventListener('blur', function() {
+    cell.textContent = input.value;
+    updateArraysFromTable();
+  });
 
+  // Replace the cell content with the input field
+  cell.innerHTML = '';
+  cell.appendChild(input);
+  input.focus();
+}
 
+function updateArraysFromTable() {
+  vectorLengths = [];
+  rotationSpeeds = [];
 
+  const table = document.getElementById('user-input-table');
+  const rows = table.rows;
+
+  for (let i = 1; i < rows.length; i++) {
+    const vectorLengthCell = rows[i].cells[0];
+    const rotationSpeedCell = rows[i].cells[1];
+
+    vectorLengths.push(Number(vectorLengthCell.textContent));
+    rotationSpeeds.push(Number(rotationSpeedCell.textContent));
+  }
+}
+
+// Draw function
 function draw() {
   background(255);
 
   cumSpeeds = [0];  
 
+  updateArraysFromTable();
+  
   drawGrid(20, 20);
 
   let x = width / 2;
