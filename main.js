@@ -238,7 +238,7 @@ function draw() {
 
   stroke(0, 255, 0);
 
-  for (let i = 5; i < endPointPath.length; i++) {
+  for (let i = 0; i < endPointPath.length; i++) {
     vertex(endPointPath[i].x, endPointPath[i].y);
   }
   endShape();
@@ -246,6 +246,10 @@ function draw() {
   fill(0);
   ellipse(x, y, 10, 10);
   
+  fill(0);
+  noStroke();
+  const endPointText = endPointPath.map((point, index) => `(${point.x.toFixed(2)}, ${point.y.toFixed(2)})`).join(' -> ');
+  text(endPointText, 10, height - 20);
 
   currentFrame++;
 }
