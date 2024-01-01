@@ -189,6 +189,7 @@ function updateArraysFromTable() {
 
 // Draw function
 function draw() {
+  updateArraysFromTable();
   background(255);
 
   cumSpeeds = [0];  
@@ -198,7 +199,7 @@ function draw() {
 
   let x = width / 2;
   let y = height / 2;
-  updateArraysFromTable();
+  
   fill(0);
   noStroke();
   ellipse(width / 2, height / 2, 10, 10);
@@ -246,10 +247,6 @@ function draw() {
   fill(0);
   ellipse(x, y, 10, 10);
   
-  fill(0);
-  noStroke();
-  const endPointText = endPointPath.map((point, index) => `(${point.x.toFixed(2)}, ${point.y.toFixed(2)})`).join(' -> ');
-  text(endPointText, 10, height - 20);
 
   currentFrame++;
 }
