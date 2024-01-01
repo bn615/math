@@ -235,20 +235,10 @@ function draw() {
   stroke(0, 255, 0);
   for (let i = 1; i < endPointPath.length; i++) {
     line(endPointPath[i - 1].x, endPointPath[i - 1].y, endPointPath[i].x, endPointPath[i].y);
-    console.log(endPointPath[i]);
+    
   }
 
-  // Draw the permanent paths
-  noFill();
-  beginShape();
   
-  for (const point of endPointPath) {
-    vertex(point.x, point.y);
-  }
-  endShape();
-
-  fill(0);
-  ellipse(x, y, 10, 10);
 
   currentFrame++;
 }
