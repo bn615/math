@@ -203,7 +203,7 @@ function draw() {
   ellipse(width / 2, height / 2, 10, 10);
 
   stroke(0);
-  
+  let endPointPath = [];
   for (let i = 0; i < vectorLengths.length; i++) {
     let radius = vectorLengths[i];
     
