@@ -238,7 +238,7 @@ function draw() {
 
   stroke(0, 255, 0);
 
-  for (let i = 1; i < endPointPath.length; i++) {
+  for (let i = 5; i < endPointPath.length; i++) {
     vertex(endPointPath[i].x, endPointPath[i].y);
   }
   endShape();
