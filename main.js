@@ -173,7 +173,7 @@ function updateArraysFromTable() {
 
   const table = document.getElementById('user-input-table');
   const rows = table.rows;
-  endPointPath = [];
+  
   for (let i = 1; i < rows.length; i++) {
     const vectorLengthCell = rows[i].cells[0];
     const rotationSpeedCell = rows[i].cells[1];
